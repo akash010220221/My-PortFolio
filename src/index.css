@@ -2,46 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #0f172a;
-  /* Slate 900 */
-  color: #f8fafc;
-  /* Slate 50 */
+/* Navbar shimmer underline animation */
+@keyframes nav-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.nav-shimmer-line {
+  background: linear-gradient(90deg, transparent 0%, #34d399 30%, #6ee7b7 50%, #34d399 70%, transparent 100%);
+  background-size: 200% auto;
+  animation: nav-shimmer 1.8s linear infinite;
 }
 
+@layer base {
+  body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+    background-color: #0b0f17;
+    color: #e2e8f0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Plus Jakarta Sans", Inter, sans-serif;
+    color: #ffffff;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #131c2e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 4px;
+  background: #1e293b;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #334155;
 }
 
-@keyframes move-stars {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-100vh);
-  }
+/* Fine subtle dot background for engineered feel */
+.bg-grid-subtle {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.animate-stars {
-  animation: move-stars linear infinite;
+/* Crafted card styling */
+.craft-card {
+  background-color: #111724;
+  border: 1px solid rgba(30, 41, 59, 0.8);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+.craft-card:hover {
+  border-color: rgba(51, 65, 85, 0.9);
+  background-color: #141b2a;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
 }

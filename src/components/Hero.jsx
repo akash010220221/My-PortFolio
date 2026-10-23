@@ -1,74 +1,119 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
-import StarBackground from "./StarBackground";
-import profilePhoto from "../assets/Akash.jpeg";
+import { ArrowRight, FileText, Send, Sparkles, Terminal, MapPin } from "lucide-react";
+import { Link } from "react-scroll";
+import { SiLeetcode } from "react-icons/si";
+import resumePdf from "../assets/Akash_Kumar_Resume.pdf";
+import profilePhoto from "../assets/AkashProfile.jpg";
 
 const Hero = () => {
     return (
-        <section id="about" className="min-h-screen flex items-center pt-20 bg-slate-900 overflow-hidden relative">
-            {/* Background blobs */}
-            <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div className="absolute top-0 -right-4 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        <section id="about" className="min-h-[92vh] flex items-center pt-32 sm:pt-36 lg:pt-24 pb-16 px-6 md:px-12 relative overflow-hidden bg-grid-subtle">
+            {/* Soft Ambient Radial Highlight */}
+            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-            <StarBackground />
-
-
-            <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div className="max-w-4xl mx-auto w-full relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-emerald-400 font-medium tracking-wider mb-4">HELLO, I'M AKASH</h2>
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                        Creative <br />
-                        <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                            Developer
-                        </span>
+                    {/* Mobile Only: Profile Avatar & Status Bar */}
+                    <div className="lg:hidden flex items-center gap-3.5 p-3 rounded-2xl bg-[#111724] border border-slate-800 mb-6 shadow-lg shadow-black/40">
+                        <div className="w-14 h-14 rounded-xl overflow-hidden border border-slate-700/80 shrink-0">
+                            <img src={profilePhoto} alt="Akash Kumar" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-white text-sm">Akash Kumar</span>
+                                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Available
+                                </span>
+                            </div>
+                            <p className="text-xs font-mono text-indigo-400 truncate">Full Stack MERN Developer</p>
+                            <p className="text-[11px] text-slate-400 font-mono">📍 India · 500+ Solved</p>
+                        </div>
+                    </div>
+
+                    {/* Eyebrow Badge */}
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs mb-6">
+                        <Terminal size={13} className="text-indigo-400" />
+                        <span>MERN STACK & PROBLEM SOLVING</span>
+                    </div>
+
+                    {/* Main Headline */}
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
+                        Engineering scalable web applications with{" "}
+                        <span className="text-slate-100 underline decoration-indigo-500/60 decoration-wavy underline-offset-8">
+                            craftsmanship
+                        </span>{" "}
+                        & speed.
                     </h1>
-                    <p className="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed">
-                        I build exceptional digital experiences with modern technologies.
-                        Passionate about creating beautiful, responsive, and user-friendly web applications,
-                        I’m also a problem solver at heart, turning complex challenges into elegant, scalable solutions.
+
+                    {/* Bio Paragraph */}
+                    <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+                        Hi, I'm <span className="text-slate-200 font-semibold">Akash Kumar</span>. I build responsive, production-grade digital products across the entire stack. With a strong algorithmic foundation and over 500+ coding problems solved across platforms, I write code that is clean, maintainable, and built for performance.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 mb-10">
-                        <a href="#projects" className="bg-gradient-to-r from-blue-500 to-emerald-500 text-white px-8 py-3 rounded-full font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-emerald-500/20 transition-all transform hover:-translate-y-1">
-                            View Projects <ArrowRight size={20} />
+                    {/* Call to Actions */}
+                    <div className="flex flex-wrap items-center gap-3.5 mb-14">
+                        <Link
+                            to="projects"
+                            smooth={true}
+                            duration={500}
+                            offset={-90}
+                            containerId="main-scroll-container"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 cursor-pointer active:scale-95"
+                        >
+                            <span>Explore Projects</span>
+                            <ArrowRight size={16} />
+                        </Link>
+
+                        <a
+                            href={resumePdf}
+                            download="Akash_Kumar_Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/70 text-slate-200 hover:text-white font-medium text-sm transition-all duration-200 cursor-pointer active:scale-95"
+                        >
+                            <FileText size={16} className="text-slate-400" />
+                            <span>Resume (CV)</span>
                         </a>
-                        <a href="#contact" className="border border-slate-700 text-slate-300 px-8 py-3 rounded-full font-medium hover:bg-slate-800 transition-all transform hover:-translate-y-1">
-                            Contact Me
-                        </a>
+
+                        <Link
+                            to="contact"
+                            smooth={true}
+                            duration={500}
+                            offset={-90}
+                            containerId="main-scroll-container"
+                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl hover:bg-slate-800/50 text-slate-400 hover:text-slate-200 font-medium text-sm transition-all duration-200 cursor-pointer"
+                        >
+                            <Send size={15} />
+                            <span>Get in Touch</span>
+                        </Link>
                     </div>
 
-                    <div className="flex gap-6">
-                        {[
-                            { name: 'Github', icon: Github, link: 'https://github.com/akash010220221' },
-                            { name: 'Linkedin', icon: Linkedin, link: 'https://www.linkedin.com/in/akashkr0102' },
-                            { name: 'Mail', icon: Mail, link: 'mailto:akashkrsingh1104@gmail.com' }
-                        ].map((platform, i) => (
-                            <a key={i} href={platform.link} target={platform.name === 'Mail' ? '_self' : '_blank'} rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
-                                <platform.icon size={24} />
-                            </a>
-                        ))}
-                    </div>
-                </motion.div>
+                    {/* Engineering Proof Metrics */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-800/80">
+                        <div className="p-3 rounded-xl bg-[#111724]/70 border border-slate-800/80">
+                            <div className="text-2xl font-bold font-mono text-white flex items-center gap-1.5">
+                                <SiLeetcode className="text-amber-500" size={20} /> 500+
+                            </div>
+                            <div className="text-xs text-slate-400 mt-1">Problems Solved</div>
+                        </div>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative"
-                >
-                    <div className="relative w-full aspect-square max-w-md mx-auto group">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-emerald-500 rounded-2xl rotate-6 opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500"></div>
-                        <div className="absolute inset-0 bg-slate-800 rounded-2xl border border-slate-700 group-hover:border-emerald-500 overflow-hidden transition-all duration-500">
-                            <img
-                                src={profilePhoto}
-                                alt="Akash Kumar"
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
+                        <div className="p-3 rounded-xl bg-[#111724]/70 border border-slate-800/80">
+                            <div className="text-2xl font-bold font-mono text-white">MERN</div>
+                            <div className="text-xs text-slate-400 mt-1">Primary Tech Stack</div>
+                        </div>
+
+                        <div className="p-3 rounded-xl bg-[#111724]/70 border border-slate-800/80">
+                            <div className="text-2xl font-bold font-mono text-emerald-400">2024</div>
+                            <div className="text-xs text-slate-400 mt-1">Hackathon Finalist</div>
+                        </div>
+
+                        <div className="p-3 rounded-xl bg-[#111724]/70 border border-slate-800/80">
+                            <div className="text-2xl font-bold font-mono text-indigo-400">100%</div>
+                            <div className="text-xs text-slate-400 mt-1">Responsive Design</div>
                         </div>
                     </div>
                 </motion.div>
