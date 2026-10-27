@@ -29,7 +29,7 @@ const Contact = () => {
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
-        const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+        const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "9d5b3e88-e996-4231-91b0-cde0466a93ef";
 
         if (!accessKey) {
             setStatus("error");

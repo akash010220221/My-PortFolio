@@ -24,7 +24,7 @@ function App() {
         if (hasCounted.current) return;
         hasCounted.current = true;
 
-        const dbUrl = import.meta.env.VITE_FIREBASE_DB_URL;
+        const dbUrl = import.meta.env.VITE_FIREBASE_DB_URL || "https://akash-portfolio-c5c33-default-rtdb.firebaseio.com";
         if (!dbUrl) {
             // Firebase not configured — hide counter silently
             setVisitorError(true);
